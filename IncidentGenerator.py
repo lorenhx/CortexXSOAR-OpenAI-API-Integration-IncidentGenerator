@@ -32,7 +32,7 @@ class OpenAIAssistant:
         #Return the last message to append to the next request
         return generated_content[0]["message"]
 
-    def create_session(self, continue_prompts=2): #con 4 non ce la con il contesto
+    def create_session(self, continue_prompts=50):
         url = 'https://api.openai.com/v1/chat/completions'
 
         # Prompt to set the system role
