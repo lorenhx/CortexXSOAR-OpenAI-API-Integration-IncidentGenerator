@@ -1,0 +1,691 @@
+commonfields:
+  id: RED_generator
+  version: -1
+vcShouldKeepItemLegacyProdMachine: false
+name: RED_generator
+display: RED_generator
+category: Utilities
+image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAF8ElEQVRo3tVaa2wUVRQ+lUeolLZQHwQxEUIi/GgpakvTst2d7fax7RaEUFOIRW2x7e7cme220BawNSQ1MQZFgYaH8gvlFVAxUYIIJPxRA7FSLCpBJMYnL5FEyh8cvzttodvd6e527izpJCezO3Pn3Pvde853zzkzRKKPAmUOScp+Kg/MoVF7FCiZJLHz5JA1nL8jlzxzxLoklgw908iBc5xBZKPTSzqIAcmvPU3Ltk+NSc/S5vGUz9YASBd0XIXOb2jpKm+cQDAnOvw9CAQXm1ej0ubj9PW5yVHpaXplLJU3bKN83xA9+F+gtJAnkGAdCIm50dm1EBADYgeYrJrDlF0d2UTscj7ZfXcMdN2kJW2PWwPCIZdC/jYEESwHATopwsquHVZHgb9IPAinvhI3owTRJ5L8ITm8xisjye8N+7xLtQk2JyUHPnElJhB3CcB7hCpff9TATI8bPmfzXUCfqeJAuPyzoPinEYEYkMKGr8jtnztkhbmZ3gr1MYiTXaPFgWKRFDuenMpBUyD0wemsBGqVt2EVWmgRmMoh3wjTthdAdlGpP120cz8EO/7FNJBQswm95mR7qKTBoujAqUzADJ4QDiREWDe5lInWbn5FgWysyiEAOmNgDuZFkt+N107+AGw3hUrU6VSsLsTvo4LBHMFEJVDcD7syBh1vEQikFz5SRPflkNRU2PY5cebF/oBPLjM/sMWBVEShKpRuJxeLjsMdyibx/sL2UUXHCNmrtiUZ9n/0bhSaW3uL1A2RuVxiqy1ismvQvR7ycKxx1GuUP0hRdo1GLVvfjsK8NlpMzRdhbowKlSmRQVSumg/kt4csr0Y5dZepyvuEMXh/Ctr1kA1t56vDC28jmaLnbkQZ9VSoJhqxzzh08rmhguyXPqI9xxINzOotPsDkhbXavMZlWmZgeVjh93gbHYx5//kWYFZQkfLg0P2hAg3+M3xwQb1GFe0nacVaDz3XOB3m9xiU5UP64i/M9rzG5dq+6xnanqsZ2u4rc4OEX+P3eBt9ZYQRgnf/4IAwERe7IsyARnl1PBTX9IRKYteD7mNwfNb5gD+4nKG9/9fcIOHX+D3eRggQbp42Pp616wYBUVeaVtwPhM8+H/iuPzODhF/j94QB4RNaFviR1h1K6wPxYkcyZvqHUQckC2y6utN3bzWatzDKqtZGHZDcuh56oWNSH4h3dqRRSdP5frsfXUAkVn1vNTxyO+V5zfG6GGe/ohMIn1BOKFJEej5NBfKEwfHRAWE0OBL6ldh+0H4ussRpOqVXrfFQRdtJneqN+7qD+G9J8N7hbkzEalRBusynrDFuiE7lzbCbK990s6s/Ns732WGkweMMQgxs95JSB0BnzPF61CHKWVC+cY1rZWAG5fmuhs1Vlq96JprsbzLyZRmoL1gaADrZGxHHsiSwKagwwUtDLmV9rBEwKiasvb9sY0FezgIRx/BsUybCoN5Bz32G2CppZLlJTfNssrO94sEoG6MrCLIytN8KS/EB/CQBNS1WCflNIJgeOHvKfcrLlULd2YT5ibwZ5zHxB+JAicbBjgg1MV5KcjcuIk/TdFBrKnwzTsCcyk6LmIynBd04f0Lu1qctNi05CZ2dtbxkKiknyNmQaA0Il5qOTkLDmZyXrQDzMyRNLACPmgmlu+Ebt0MTG991Yhs6sUM34n6nvufYTfsMJ4G9VMjGigNR0+LRbTf84P4lW31wWdOtZlCx8qUpMPw9fZEyUxyI1rYpCA8uGQ5Kkr8I+5y39RFa4Ds8QiCXwVpZYk2q1C9FeIexw/BZm5yMmY01PbgBJ7egcF3oLxnWjl1Kc4Ty6USAPRBDSbTYGpZqacMGJf8TvnqBxEaS8yLqyKpJhnyqfzRgHPrzzzQsfIWweE0CuHw12euHMpVG5f7N+Nwiuh2Yf77hbj6mf84Rap6/YoO1x2cnL3m1Dp2e0h1RwtkuB5CSxhZGPL9zKj4UONX/NncAxEWS/E/FOcaSJ+mfHDlNhNFlrTP0l5x9weL38LF0GrWHq2m2/uLGpT4pWvX/zRDqQjZWrVoAAAAASUVORK5CYII=
+description: This is the Hello World integration for getting started.
+detaileddescription: |-
+  ### Community Contributed Integration
+   #### Integration Author: Cortex XSOAR
+   No support or maintenance is provided by the author. Customers are encouraged to engage with the user community for questions and guidance at the [Cortex XSOAR Live Discussions](https://live.paloaltonetworks.com/t5/cortex-xsoar-discussions/bd-p/Cortex_XSOAR_Discussions).
+  ***
+  ## Hello World
+  - This section explains how to configure the instance of HelloWorld in Cortex XSOAR.
+  - You can use the following API Key: `43ea9b2d-4998-43a6-ae91-aba62a26868c`
+
+  ---
+  [View Integration Documentation](https://xsoar.pan.dev/docs/reference/integrations/hello-world)
+configuration:
+- section: Connect
+  display: API Key Open AI
+  name: api_key
+  type: 4
+  required: true
+- section: Collect
+  display: Fetch incidents
+  name: isFetch
+  type: 8
+  required: false
+- section: Connect
+  display: Incident type
+  name: incidentType
+  type: 13
+  required: false
+- display: Incidents Fetch Interval
+  name: incidentFetchInterval
+  defaultvalue: "1"
+  type: 19
+  required: false
+script:
+  script: |
+    register_module_line('Incident Generator', 'start', __line__())
+    import requests
+    import json
+    import time
+    import re
+    import urllib3
+
+    # Disable insecure warnings
+    urllib3.disable_warnings()
+
+
+    class Client(BaseClient):
+        """ Client class to interact with the OpenAI ChatGPT API v3
+        """
+
+        def __init__(self, api_key: str, base_url: str, proxy: bool, verify: bool):
+            super().__init__(base_url=base_url, proxy=proxy, verify=verify)
+            self.api_key = api_key
+            self.base_url = base_url
+            self.headers = {'Authorization': f"Bearer {self.api_key}", "Content-Type": "application/json"}
+
+        def chatgpt(self, options):
+            demisto.results("richiesta fatta")
+            return self._http_request(method='POST', url_suffix='v1/chat/completions', json_data=options, headers=self.headers)
+    def test_module(client: Client) -> str:
+        """
+        Tests API connectivity and authentication'
+        Returning 'ok' indicates that connection to the service is successful.
+        Raises exceptions if something goes wrong.
+        """
+        data = {
+        "model": "gpt-3.5-turbo",
+        "messages": 'Hello',
+        "temperature": 0.7
+        }
+        response = client.chatgpt(data)
+        status = ''
+        try:
+            if response:
+                status = 'ok'
+                return status
+        except Exception as e:
+            exception_text = str(e).lower()
+            if 'forbidden' in exception_text or 'authorization' in exception_text:
+                status = 'Authorization Error: make sure API Key is correctly set'
+                return status
+            else:
+                raise e
+
+        return status
+
+
+    class OpenAIAssistant:
+        def __init__(self, api_key):
+            self.api_key = api_key
+            self.headers = {
+                'Authorization': f"Bearer {self.api_key}",
+                'Content-Type': 'application/json'
+            }
+            self.messages = [] #messages to send to the Open AI api in the content field
+            self.responses = [] #parsed responses from the Open AI api with the generated alerts in json format
+
+        def set_message(self, content, role='system'):
+            self.messages.append({'role': role, 'content': content})
+
+        #Saves alerts in self.rensponses (list of json) and return the message to append
+
+        def parser(self, response):
+
+
+            # Extract generated content from the API response
+            generated_content = response.json().get('choices', [])
+
+            #Finds all the json in the response
+            matches = re.findall(r'\{[^\{\}]+\}', str(generated_content[0]['message']['content']))
+            for m in matches:
+                self.responses.append(json.loads(m))
+
+            #Return the last message to append to the next request
+            return generated_content[0]["message"]
+
+        def create_session(self, continue_prompts=2): #con 4 non ce la con il contesto
+            url = 'https://api.openai.com/'
+
+            # Prompt to set the system role
+            self.set_message("You are the Google Chronicle SIEM who produces security alerts that you take from different sources inside an enterprise. You give in output only a list of JSON of this alerts and not a single line of text. You give at least 10 alert for every request, that can be to simulate a particular attack in the Cyber Kill Chain and hide it between noise alerts. You only write alerts not a single line of text")
+
+            # Initial user prompt
+            self.set_message("Generate 30 alert, one every second where you hide an attack on a windows machine starting with a phishing and then finish with exfiltration, between casual alerts which will compose some noise to better simulate the SIEM. Every response you give me has to be a list of  2 JSON that has to be closed and opened in every response you give me. I will next ask you to continue the output, so split the output. I repeat: every response has to be only a list of 2 JSON not incomplete and don't put any text other than the list. Use the actual time for the timestamps", role='user')
+
+            # Communicate with the Open AI api
+            data = {
+                "model": "gpt-3.5-turbo",
+                "messages": self.messages,
+                "temperature": 0.7
+            }
+            try:
+                client = Client(api_key=self.api_key, base_url=url, verify=False, proxy=False)
+                response = client.chatgpt(data)
+            except Exception as e:
+                demisto.error(traceback.format_exc())  # print the traceback
+                return_error("Failed to communicate with Open AI Api. Error: " + str(e))
+
+
+            #response = requests.post(url, headers=self.headers, json=data)
+            # if response.status_code != 200:
+            #     raise DemistoException(f"Error {response.status_code}: {response.text}")
+
+            toappend = self.parser(response)
+
+            #first messages are about 40 chars long
+            lenghts = 40
+
+            # Add "continue" prompts to generate more alerts
+            for i in range(continue_prompts):
+                #wait 21 seconds to avoid overcoming the 3 requests per minute limit
+                time.sleep(21)
+
+                self.messages.append(toappend)
+
+
+                # 1 token ~= 4 chars in English, controls the max number of tokens to avoid overcoming 4097 tokens
+                lenghts += len(str(toappend))
+                if lenghts > 3000 * 4:
+                    break
+
+                self.set_message("continue", role = "user")
+                data = {
+                        "model": "gpt-3.5-turbo",
+                        "messages": self.messages,
+                        "temperature": 0.7
+                    }
+                try:
+                    client = Client(api_key=self.api_key, base_url=url, verify=False, proxy=False)
+                    response = client.chatgpt(data)
+                except Exception as e:
+                    demisto.error(traceback.format_exc())  # print the traceback
+                    return_error("Failed to communicate with Open AI Api. Error: " + str(e))
+
+
+                toappend = self.parser(response)
+
+            print("parsed content:\n", self.responses)
+
+
+        def get_responses(self):
+            return self.responses
+
+    def main():
+        api_key = str(demisto.params().get('api_key'))
+        try:
+            openai_assistant = OpenAIAssistant(api_key)
+            demisto.log("first prompt ok")
+            # Create a session (send messages to the OpenAI API)
+
+            openai_assistant.create_session(continue_prompts=2)
+            demisto.log("third prompt ok")
+            # Get all parsed responses
+            parsed_responses = openai_assistant.get_responses()
+
+            # Send generated alerts to Cortex XSOAR
+            for response_json in parsed_responses:
+                print(response_json)
+
+                demisto.incidents([{
+                    'name': response_json["description"],
+                    'occurred': response_json["timestamp"],
+                    'rawJSON': json.dumps(response_json),
+                    'type':response_json["event_type"],
+                    'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"] ,
+                    'severity':response_json["severity"],
+                }])
+
+            print('Alerts successfully generated using ChatGPT API and sent to Cortex XSOAR.')
+        except requests.exceptions.RequestException as e:
+            print(f'Error making request to OpenAI API: {str(e)}')
+
+    if __name__ in ('__main__', '__builtin__', 'builtins'):
+        main()
+  type: python
+  commands:
+  - name: helloworld-say-hello
+    arguments:
+    - name: name
+      description: The name of whom you want to say hello to.
+    outputs:
+    - contextPath: hello
+      description: Should be Hello **something** here.
+      type: String
+    description: Hello command - prints hello to anyone.
+  - name: helloworld-search-alerts
+    arguments:
+    - name: severity
+      description: Filter by alert severity. Comma-separated value (Low,Medium,High,Critical)
+    - name: status
+      auto: PREDEFINED
+      predefined:
+      - ACTIVE
+      - CLOSED
+      description: Filter by alert status.
+    - name: alert_type
+      description: Filter by alert type
+    - name: max_results
+      description: Maximum results to return.
+    - name: start_time
+      description: "Filter by start time. \nExamples:\n  \"3 days ago\"\n  \"1 month\"\n
+        \ \"2019-10-10T12:22:00\"\n  \"2019-10-10\""
+    outputs:
+    - contextPath: HelloWorld.Alert.alert_id
+      description: Alert ID.
+      type: String
+    - contextPath: HelloWorld.Alert.alert_status
+      description: Alert status. Can be 'ACTIVE' or 'CLOSED'.
+      type: String
+    - contextPath: HelloWorld.Alert.alert_type
+      description: Alert type. For example 'Bug' or 'Vulnerability'.
+      type: String
+    - contextPath: HelloWorld.Alert.created
+      description: Alert created time. Format is ISO8601 (i.e. '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: HelloWorld.Alert.name
+      description: Alert name.
+      type: String
+    - contextPath: HelloWorld.Alert.severity
+      description: Alert severity. Can be 'Low', 'Medium', 'High' or 'Critical'.
+      type: String
+    description: Search HelloWorld Alerts.
+  - name: helloworld-get-alert
+    arguments:
+    - name: alert_id
+      required: true
+      description: Alert ID.
+    outputs:
+    - contextPath: HelloWorld.Alert.alert_id
+      description: Alert ID.
+      type: String
+    - contextPath: HelloWorld.Alert.created
+      description: Alert created time. Format is ISO8601 (i.e. '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: HelloWorld.Alert.description
+      description: Alert description.
+      type: String
+    - contextPath: HelloWorld.Alert.device_id
+      description: ID of the device involved in the alert.
+      type: String
+    - contextPath: HelloWorld.Alert.device_ip
+      description: IP Address of the device involved in the alert.
+      type: String
+    - contextPath: HelloWorld.Alert.location
+      description: Location of the device involved in the alert.
+      type: String
+    - contextPath: HelloWorld.Alert.user
+      description: User involved in the alert.
+      type: String
+    description: Retrieve alert extra data by ID.
+  - name: helloworld-update-alert-status
+    arguments:
+    - name: alert_id
+      required: true
+      description: Alert ID to update.
+    - name: status
+      required: true
+      auto: PREDEFINED
+      predefined:
+      - ACTIVE
+      - CLOSED
+      description: New status of the alert.
+    outputs:
+    - contextPath: HelloWorld.Alert.alert_id
+      description: Alert ID.
+      type: String
+    - contextPath: HelloWorld.Alert.updated
+      description: Alert update time. Format is ISO8601 (i.e. '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: HelloWorld.Alert.alert_status
+      description: Alert status. Can be 'ACTIVE' or 'CLOSED'.
+      type: String
+    description: Update the status for an alert.
+  - name: ip
+    arguments:
+    - name: ip
+      default: true
+      description: List of IPs.
+      isArray: true
+    - name: threshold
+      description: If the IP has reputation above the threshold then the IP defined
+        as malicious. If threshold not set, then threshold from instance configuration
+        is used.
+      defaultValue: "65"
+    outputs:
+    - contextPath: DBotScore.Indicator
+      description: The indicator that was tested.
+      type: String
+    - contextPath: DBotScore.Score
+      description: The actual score.
+      type: Number
+    - contextPath: DBotScore.Type
+      description: The indicator type.
+      type: String
+    - contextPath: DBotScore.Vendor
+      description: The vendor used to calculate the score.
+      type: String
+    - contextPath: HelloWorld.IP.asn
+      description: The autonomous system name for the IP address.
+      type: String
+    - contextPath: HelloWorld.IP.asn_cidr
+      description: The ASN CIDR.
+      type: String
+    - contextPath: HelloWorld.IP.asn_country_code
+      description: The ASN country code.
+      type: String
+    - contextPath: HelloWorld.IP.asn_date
+      description: The date on which the ASN was assigned.
+      type: Date
+    - contextPath: HelloWorld.IP.asn_description
+      description: The ASN description.
+      type: String
+    - contextPath: HelloWorld.IP.asn_registry
+      description: The registry the ASN belongs to.
+      type: String
+    - contextPath: HelloWorld.IP.entities
+      description: Entities associated to the IP.
+      type: String
+    - contextPath: HelloWorld.IP.ip
+      description: The actual IP address.
+      type: String
+    - contextPath: HelloWorld.IP.network.cidr
+      description: Network CIDR for the IP address.
+      type: String
+    - contextPath: HelloWorld.IP.network.country
+      description: The country of the IP address.
+      type: Unknown
+    - contextPath: HelloWorld.IP.network.end_address
+      description: The last IP address of the CIDR.
+      type: String
+    - contextPath: HelloWorld.IP.network.events.action
+      description: The action that happened on the event.
+      type: String
+    - contextPath: HelloWorld.IP.network.events.actor
+      description: The actor that performed the action on the event.
+      type: Unknown
+    - contextPath: HelloWorld.IP.network.events.timestamp
+      description: The timestamp when the event occurred.
+      type: String
+    - contextPath: HelloWorld.IP.network.handle
+      description: The handle of the network.
+      type: String
+    - contextPath: HelloWorld.IP.network.ip_version
+      description: The IP address version.
+      type: String
+    - contextPath: HelloWorld.IP.network.links
+      description: Links associated to the IP address.
+      type: String
+    - contextPath: HelloWorld.IP.network.name
+      description: The name of the network.
+      type: String
+    - contextPath: HelloWorld.IP.network.notices.description
+      description: The description of the notice.
+      type: String
+    - contextPath: HelloWorld.IP.network.notices.links
+      description: Links associated with the notice.
+      type: Unknown
+    - contextPath: HelloWorld.IP.network.notices.title
+      description: Title of the notice.
+      type: String
+    - contextPath: HelloWorld.IP.network.parent_handle
+      description: Handle of the parent network.
+      type: String
+    - contextPath: HelloWorld.IP.network.raw
+      description: Additional raw data for the network.
+      type: Unknown
+    - contextPath: HelloWorld.IP.network.remarks
+      description: Additional remarks for the network.
+      type: Unknown
+    - contextPath: HelloWorld.IP.network.start_address
+      description: The first IP address of the CIDR.
+      type: String
+    - contextPath: HelloWorld.IP.network.status
+      description: Status of the network.
+      type: String
+    - contextPath: HelloWorld.IP.network.type
+      description: The type of the network.
+      type: String
+    - contextPath: HelloWorld.IP.query
+      description: IP address that was queried.
+      type: String
+    - contextPath: HelloWorld.IP.raw
+      description: Additional raw data for the IP address.
+      type: Unknown
+    - contextPath: HelloWorld.IP.score
+      description: Reputation score from HelloWorld for this IP (0 to 100, where higher
+        is worse).
+      type: Number
+    - contextPath: IP.Address
+      description: IP address.
+      type: String
+    - contextPath: IP.Malicious.Vendor
+      description: The vendor reporting the IP address as malicious.
+      type: String
+    - contextPath: IP.Malicious.Description
+      description: A description explaining why the IP address was reported as malicious.
+      type: String
+    - contextPath: IP.ASN
+      description: The autonomous system name for the IP address.
+      type: String
+    - contextPath: IP.Relationships.EntityA
+      description: The source of the relationship.
+      type: string
+    - contextPath: IP.Relationships.EntityB
+      description: The destination of the relationship.
+      type: string
+    - contextPath: IP.Relationships.Relationship
+      description: The name of the relationship.
+      type: string
+    - contextPath: IP.Relationships.EntityAType
+      description: The type of the source of the relationship.
+      type: string
+    - contextPath: IP.Relationships.EntityBType
+      description: The type of the destination of the relationship.
+      type: string
+    description: Return IP information and reputation
+  - name: domain
+    arguments:
+    - name: domain
+      default: true
+      description: List of Domains.
+      isArray: true
+    - name: threshold
+      description: If the domain has reputation above the threshold then the domain
+        defined as malicious. If threshold not set, then threshold from instance configuration
+        is used.
+      defaultValue: "65"
+    outputs:
+    - contextPath: DBotScore.Indicator
+      description: The indicator that was tested.
+      type: String
+    - contextPath: DBotScore.Score
+      description: The actual score.
+      type: Number
+    - contextPath: DBotScore.Type
+      description: The indicator type.
+      type: String
+    - contextPath: DBotScore.Vendor
+      description: The vendor used to calculate the score.
+      type: String
+    - contextPath: Domain.Name
+      description: The domain name.
+      type: String
+    - contextPath: Domain.Malicious.Vendor
+      description: The vendor reporting the domain as malicious.
+      type: String
+    - contextPath: Domain.Malicious.Description
+      description: A description explaining why the domain was reported as malicious.
+      type: String
+    - contextPath: Domain.Registrant.Name
+      description: The name of the registrant.
+      type: String
+    - contextPath: Domain.Registrant.Country
+      description: The country of the registrant.
+      type: String
+    - contextPath: Domain.Organization
+      description: The organization of the domain.
+      type: String
+    - contextPath: Domain.CreationDate
+      description: The creation date of the domain. Format is ISO8601 (i.e. '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: Domain.ExpirationDate
+      description: The expiration date of the domain. Format is ISO8601 (i.e. '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: Domain.UpdatedDate
+      description: The date when the domain was last updated. Format is ISO8601 (i.e.
+        '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: Domain.NameServers
+      description: Name servers of the domain.
+      type: String
+    - contextPath: Domain.WHOIS.NameServers
+      description: A CSV string of name servers, for example 'ns1.bla.com, ns2.bla.com'.
+      type: String
+    - contextPath: Domain.WHOIS.CreationDate
+      description: The creation date of the domain. Format is ISO8601 (i.e. '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: Domain.WHOIS.UpdatedDate
+      description: The date when the domain was last updated. Format is ISO8601 (i.e.
+        '2020-04-30T10:35:00.000Z').
+      type: Date
+    - contextPath: Domain.WHOIS.ExpirationDate
+      description: The expiration date of the domain.
+      type: Date
+    - contextPath: Domain.WHOIS.Registrar.Name
+      description: The name of the registrar, for example 'GoDaddy'
+      type: String
+    - contextPath: IP.ASN
+      description: The autonomous system name for the IP address.
+      type: String
+    - contextPath: HelloWorld.Domain.address
+      description: Domain admin address.
+      type: String
+    - contextPath: HelloWorld.Domain.city
+      description: Domain admin city.
+      type: String
+    - contextPath: HelloWorld.Domain.country
+      description: Domain admin country.
+      type: String
+    - contextPath: HelloWorld.Domain.creation_date
+      description: Domain creation date. Format is ISO8601.
+      type: Date
+    - contextPath: HelloWorld.Domain.dnssec
+      description: DNSSEC status.
+      type: String
+    - contextPath: HelloWorld.Domain.domain
+      description: The domain name.
+      type: String
+    - contextPath: HelloWorld.Domain.domain_name
+      description: Domain name options.
+      type: String
+    - contextPath: HelloWorld.Domain.emails
+      description: Contact emails.
+      type: String
+    - contextPath: HelloWorld.Domain.expiration_date
+      description: Expiration date. Format is ISO8601.
+      type: Date
+    - contextPath: HelloWorld.Domain.name
+      description: Domain admin name.
+      type: String
+    - contextPath: HelloWorld.Domain.name_servers
+      description: Name server.
+      type: String
+    - contextPath: HelloWorld.Domain.org
+      description: Domain organization.
+      type: String
+    - contextPath: HelloWorld.Domain.referral_url
+      description: Referral URL.
+      type: Unknown
+    - contextPath: HelloWorld.Domain.registrar
+      description: Domain registrar.
+      type: String
+    - contextPath: HelloWorld.Domain.score
+      description: Reputation score from HelloWorld for this domain (0 to 100, where
+        higher is worse).
+      type: Number
+    - contextPath: HelloWorld.Domain.state
+      description: Domain admin state.
+      type: String
+    - contextPath: HelloWorld.Domain.status
+      description: Domain status.
+      type: String
+    - contextPath: HelloWorld.Domain.updated_date
+      description: Updated date. Format is ISO8601.
+      type: Date
+    - contextPath: HelloWorld.Domain.whois_server
+      description: WHOIS server.
+      type: String
+    - contextPath: HelloWorld.Domain.zipcode
+      description: Domain admin zipcode.
+      type: Unknown
+    description: Returns Domain information and reputation.
+  - name: helloworld-scan-start
+    arguments:
+    - name: hostname
+      required: true
+      description: Asset to start the scan against.
+    outputs:
+    - contextPath: HelloWorld.Scan.scan_id
+      description: Unique ID of the scan.
+      type: string
+    - contextPath: HelloWorld.Scan.status
+      description: Status of the scan ('RUNNING' or 'COMPLETE').
+      type: string
+    - contextPath: HelloWorld.Scan.hostname
+      description: The hostname the scan is run against.
+      type: string
+    description: Start scan on an asset.
+  - name: helloworld-scan-status
+    arguments:
+    - name: scan_id
+      required: true
+      description: List of Scan IDs. helloworld-scan-start returns "scan_id".
+      isArray: true
+    outputs:
+    - contextPath: HelloWorld.Scan.scan_id
+      description: Unique ID of the scan.
+      type: string
+    - contextPath: HelloWorld.Scan.status
+      description: Status of the scan ('RUNNING' or 'COMPLETE').
+      type: string
+    description: Retrieve scan status for one or more scan IDs.
+  - name: helloworld-scan-results
+    arguments:
+    - name: format
+      required: true
+      auto: PREDEFINED
+      predefined:
+      - json
+      - file
+      description: Results format (file or JSON).
+      defaultValue: file
+    - name: scan_id
+      required: true
+      description: Unique ID of the scan.
+    outputs:
+    - contextPath: HelloWorld.Scan.entities.entity-id
+      description: Scanned entity ID.
+      type: String
+    - contextPath: HelloWorld.Scan.entities.ip_address
+      description: Scanned entity IP address.
+      type: String
+    - contextPath: HelloWorld.Scan.entities.type
+      description: Scanned entity type.
+      type: String
+    - contextPath: HelloWorld.Scan.entities.vulnerability_status
+      description: Scanned entity vulnerability status.
+      type: String
+    - contextPath: HelloWorld.Scan.entities.vulns
+      description: Scanned entity CVE.
+      type: String
+    - contextPath: HelloWorld.Scan.scan_id
+      description: Unique ID of the scan.
+      type: String
+    - contextPath: HelloWorld.Scan.status
+      description: Status of the scan ('RUNNING' or 'COMPLETE').
+      type: String
+    - contextPath: InfoFile.EntryID
+      description: The EntryID of the report file.
+      type: Unknown
+    - contextPath: InfoFile.Extension
+      description: The extension of the report file.
+      type: string
+    - contextPath: InfoFile.Name
+      description: The name of the report file.
+      type: string
+    - contextPath: InfoFile.Info
+      description: The info of the report file.
+      type: string
+    - contextPath: InfoFile.Size
+      description: The size of the report file.
+      type: number
+    - contextPath: InfoFile.Type
+      description: The type of the report file.
+      type: string
+    - contextPath: CVE.ID
+      description: The ID of the CVE.
+      type: string
+    description: Retrieve scan status in Context or as a File (default) for a Scan.
+  dockerimage: demisto/python3:3.10.12.63474
+  isfetch: true
+  runonce: false
+  subtype: python3
