@@ -5,5 +5,4 @@ Integration for Cortex XSOAR (demisto), which uses Open AI APIs to generate inci
 
 
 ## Instructions
-In the integration creation section, paste the code, set a parameter of the type "Encrypted" that must be named "api_keys".
-Then paste an active Open AI API key in correct field when you add an instance of the integration.
+Use the yml file to import the integration in the XSOAR
