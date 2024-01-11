@@ -1,6 +1,7 @@
 # CortexXSOAR-OpenAI-API-Integration-IncidentGenerator
 Integration for Cortex XSOAR (demisto), which uses Open AI APIs to generate incidents. It simulates a SIEM through a custom prompt. It generates about 20 incidents.
-![Uploading 3367893-3623298602.jpg…]()
+![3367893](https://github.com/lorenhx/CortexXSOAR-OpenAI-API-Integration-IncidentGenerator/assets/33938788/bc6aff13-8b40-4d75-a182-1f1bc06fb374)
+
 
 ## Instructions
 In the integration creation section, paste the code, set a parameter of the type "Encrypted" that must be named "api_keys".
