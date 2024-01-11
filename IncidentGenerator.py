@@ -20,7 +20,7 @@ class Client(BaseClient):
         self.headers = {'Authorization': f"Bearer {self.api_key}", "Content-Type": "application/json"}
 
     def chatgpt(self, options):
-        #demisto.results("richiesta fatta")
+
         return self._http_request(method='POST', url_suffix='v1/chat/completions', json_data=options, headers=self.headers)
 
 def test_module(client: Client) -> str:
@@ -163,7 +163,7 @@ def main():
     args = demisto.args()
     demisto.debug(f'Command being called is {command}')
     url='https://api.openai.com/'
-    #demisto.log("entro nel test module")
+
     try:
 
         client = Client(api_key, base_url=url, verify=False, proxy=False)
@@ -173,12 +173,13 @@ def main():
 
             # This is the call made when clicking the integration Test button.
             return_results(test_module(client))
-
+        elif command == 'bs':
+            return_results(test_module(client))
         else:
-            #demisto.results("entro nel main")
+
             raise NotImplementedError(f"command {command} is not implemented.")
 
-        #demisto.results("uscito dal test module")
+
         time.sleep(31)
         openai_assistant = OpenAIAssistant(api_key)
 
@@ -200,15 +201,14 @@ def main():
                 response_json["severity"] = 3
             elif response_json["severity"] == "critical":
                 response_json["severity"] = 4
-
-            demisto.incidents([{
+            incident = demisto.createIncidents([{
                 'name': response_json["description"],
                 'occurred': response_json["timestamp"],
                 'rawJSON': json.dumps(response_json),
                 'type':response_json["event_type"],
                 'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
                 'severity':response_json["severity"],
-            }])
+            }], lastRun=None, userID=None)
 
         print('Alerts successfully generated using ChatGPT API and sent to Cortex XSOAR.')
     except requests.exceptions.RequestException as e:
