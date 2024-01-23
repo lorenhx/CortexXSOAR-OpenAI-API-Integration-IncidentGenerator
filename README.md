@@ -5,4 +5,5 @@ Integration for Cortex XSOAR (demisto), which uses Open AI APIs to generate inci
 
 
 ## Instructions
-Use the yml file to import the integration in the XSOAR
+Use the yml file to import the integration in the XSOAR.
+To generate alerts, run the command !RED-start in the war room
