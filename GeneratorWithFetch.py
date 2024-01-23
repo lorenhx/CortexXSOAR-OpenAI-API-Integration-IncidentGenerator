@@ -141,14 +141,14 @@ class OpenAIAssistant:
             try:
                 client = Client(api_key=self.api_key, base_url=url, verify=False, proxy=False)
                 response = client.chatgpt(data)
-
+                
                 #controllo token usati
                 rep = json.dumps(response)
                 repJSON = json.loads(rep)
                 total_tokens = int(repJSON.get('usage', {}).get('total_tokens', 0))
                 if total_tokens > 4000:
                     return
-
+            
             except Exception as e:
                 demisto.error(traceback.format_exc())  # print the traceback
                 return_error("Failed to communicate with Open AI Api. Error: " + str(e))
@@ -210,13 +210,17 @@ def fetch_incidents(client, last_run, first_fetch_time):
         elif response_json["severity"] == "critical":
             response_json["severity"] = 4
         incident = {
-            'name': response_json["description"],
-            'occurred': response_json["timestamp"],
-            'rawJSON': json.dumps(response_json),
-            'type':response_json["event_type"],
-            'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
-            'severity':response_json["severity"]
-        }
+                'name': response_json["description"],
+                'occurred': response_json["timestamp"],
+                'rawJSON': json.dumps(response_json),
+                'type':response_json["event_type"],
+                'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
+                'severity':response_json["severity"],
+            }
+        print(incident)
+        current_datetime = datetime.now()
+        formatted_datetime = current_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
+        demisto.createIncidents([incident], lastRun=formatted_datetime, userID=None)
         incidents.append(incident)
     current_datetime = datetime.now()
 
