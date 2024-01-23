@@ -4,7 +4,7 @@ import json
 import time
 import re
 import urllib3
-
+from datetime import datetime
 # Disable insecure warnings
 urllib3.disable_warnings()
 
@@ -89,6 +89,7 @@ class OpenAIAssistant:
         return generated_content[0].get('message', {})
 
     def create_session(self, continue_prompts=2): #con 4 non ce la con il contesto
+        time.sleep(31)
         url = 'https://api.openai.com/'
 
         # Prompt to set the system role
@@ -117,8 +118,12 @@ class OpenAIAssistant:
 
         toappend = self.parser(response)
 
-        #first messages are about 40 chars long
-        lenghts = 40
+        #token used
+        rep = json.dumps(response)
+        repJSON = json.loads(rep)
+        total_tokens = int(repJSON.get('usage', {}).get('total_tokens', 0))
+        if total_tokens > 4000:
+            return
 
         # Add "continue" prompts to generate more alerts
         for i in range(continue_prompts):
@@ -126,12 +131,6 @@ class OpenAIAssistant:
             time.sleep(31)
 
             self.messages.append(toappend)
-
-
-            # 1 token ~= 4 chars in English, controls the max number of tokens to avoid overcoming 4097 tokens
-            lenghts += len(str(toappend))
-            if lenghts > 3000 * 4:
-                break
 
             self.set_message("continue", role = "user")
             data = {
@@ -142,6 +141,14 @@ class OpenAIAssistant:
             try:
                 client = Client(api_key=self.api_key, base_url=url, verify=False, proxy=False)
                 response = client.chatgpt(data)
+
+                #controllo token usati
+                rep = json.dumps(response)
+                repJSON = json.loads(rep)
+                total_tokens = int(repJSON.get('usage', {}).get('total_tokens', 0))
+                if total_tokens > 4000:
+                    return
+
             except Exception as e:
                 demisto.error(traceback.format_exc())  # print the traceback
                 return_error("Failed to communicate with Open AI Api. Error: " + str(e))
@@ -154,11 +161,123 @@ class OpenAIAssistant:
 
     def get_responses(self):
         return self.responses
+def createIncidents(client: Client) -> str:
 
+    time.sleep(31)
+    openai_assistant = OpenAIAssistant(str(demisto.params().get('api_key')))
+
+    # Create a session (send messages to the OpenAI API)
+
+    openai_assistant.create_session(continue_prompts=50)
+
+    # Get all parsed responses
+    parsed_responses = openai_assistant.get_responses()
+    #demisto.results("fine richieste, inizio creazione incidenti")
+    # Send generated alerts to Cortex XSOAR
+    for response_json in parsed_responses:
+        print(response_json)
+        if response_json["severity"] == "low":
+            response_json["severity"] = 1
+        elif response_json["severity"] == "medium":
+            response_json["severity"] = 2
+        elif response_json["severity"] == "high":
+            response_json["severity"] = 3
+        elif response_json["severity"] == "critical":
+            response_json["severity"] = 4
+        incident = {
+                'name': response_json["description"],
+                'occurred': response_json["timestamp"],
+                'rawJSON': json.dumps(response_json),
+                'type':response_json["event_type"],
+                'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
+                'severity':response_json["severity"],
+            }
+
+
+        demisto.createIncidents([incident], lastRun=formatted_datetime, userID=None)
+    return
+
+def fetch_incidents(client, last_run, first_fetch_time):
+    """
+    This function will execute each interval (default is 1 minute).
+
+    Args:
+        client: HelloWorld client
+        last_run: The greatest incident created_time we fetched from last fetch
+        first_fetch_time: If last_run is None then fetch all incidents since first_fetch_time
+
+    Returns:
+        next_run: This will be last_run in the next fetch-incidents
+        incidents: Incidents that will be created in Cortex XSOAR
+    """
+    # Get the last fetch time, if exists
+    # last_fetch = last_run.get('last_fetch')
+
+    # # Handle first time fetch
+    # if last_fetch is None:
+    #     last_fetch, _ = dateparser.parse(first_fetch_time)
+    # else:
+    #     last_fetch = dateparser.parse(last_fetch)
+
+    # latest_created_time = last_fetch
+    incidents = []
+
+
+    time.sleep(31)
+    openai_assistant = OpenAIAssistant(str(demisto.params().get('api_key')))
+
+    # Create a session (send messages to the OpenAI API)
+
+    openai_assistant.create_session(continue_prompts=1)
+
+    # Get all parsed responses
+    parsed_responses = openai_assistant.get_responses()
+    #demisto.results("fine richieste, inizio creazione incidenti")
+    # Send generated alerts to Cortex XSOAR
+    cnt=0
+    for response_json in parsed_responses:
+        print(response_json)
+        if response_json["severity"] == "low":
+            response_json["severity"] = 1
+        elif response_json["severity"] == "medium":
+            response_json["severity"] = 2
+        elif response_json["severity"] == "high":
+            response_json["severity"] = 3
+        elif response_json["severity"] == "critical":
+            response_json["severity"] = 4
+        incident = {
+                'name': response_json["description"],
+                'occurred': response_json["timestamp"],
+                'rawJSON': json.dumps(response_json),
+                'type':response_json["event_type"],
+                'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
+                'severity':response_json["severity"],
+            }
+        print(incident)
+        current_datetime = datetime.now()
+        formatted_datetime = current_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
+        demisto.createIncidents([incident], lastRun=formatted_datetime, userID=None)
+        incident = {
+        'name': response_json["description"],
+        'occurred': response_json["timestamp"],
+        'rawJSON': json.dumps(response_json),
+        'dbotMirrorId': cnt,  # must be a string
+        }
+        cnt += 1
+        incidents.append(incident)
+    current_datetime = datetime.now()
+
+# Convert to a specific time format
+    formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    next_run = {'last_fetch': formatted_datetime}
+    print('Alerts successfully generated using ChatGPT API and sent to Cortex XSOAR.')
+    return next_run, incidents
 
 
 def main():
-    api_key = str(demisto.params().get('api_key'))
+    params = demisto.params()
+    api_key = str(params.get('api_key'))
+    first_fetch_time = params.get('fetch_time', '3 days').strip()
     command = demisto.command()
     args = demisto.args()
     demisto.debug(f'Command being called is {command}')
@@ -173,46 +292,15 @@ def main():
 
             # This is the call made when clicking the integration Test button.
             return_results(test_module(client))
-        elif command == 'bs':
+        elif command == 'RED-test-api':
             return_results(test_module(client))
+        elif command == 'RED-start':
+            return_results(createIncidents(client))
         else:
-
             raise NotImplementedError(f"command {command} is not implemented.")
 
-
-        time.sleep(31)
-        openai_assistant = OpenAIAssistant(api_key)
-
-        # Create a session (send messages to the OpenAI API)
-
-        openai_assistant.create_session(continue_prompts=2)
-
-        # Get all parsed responses
-        parsed_responses = openai_assistant.get_responses()
-        #demisto.results("fine richieste, inizio creazione incidenti")
-        # Send generated alerts to Cortex XSOAR
-        for response_json in parsed_responses:
-            print(response_json)
-            if response_json["severity"] == "low":
-                response_json["severity"] = 1
-            elif response_json["severity"] == "medium":
-                response_json["severity"] = 2
-            elif response_json["severity"] == "high":
-                response_json["severity"] = 3
-            elif response_json["severity"] == "critical":
-                response_json["severity"] = 4
-            incident = demisto.createIncidents([{
-                'name': response_json["description"],
-                'occurred': response_json["timestamp"],
-                'rawJSON': json.dumps(response_json),
-                'type':response_json["event_type"],
-                'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
-                'severity':response_json["severity"],
-            }], lastRun=None, userID=None)
-
-        print('Alerts successfully generated using ChatGPT API and sent to Cortex XSOAR.')
     except requests.exceptions.RequestException as e:
-        print(f'Error making request to OpenAI API: {str(e)}')
+        print(f'Failed to execute {command} command. Error: {str(e)}')
 
 if __name__ in ('__main__', '__builtin__', 'builtins'):
     main()
