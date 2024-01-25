@@ -6,4 +6,5 @@ Integration for Cortex XSOAR (demisto), which uses Open AI APIs to generate inci
 
 ## Instructions
 Use the yml file to import the integration in the XSOAR.
-To generate alerts, run the command !RED-start in the war room
+To generate alerts, run the command !RED-start in the war room.
+Set incidentgenerator.red-start.timeout (key) with 1800 (value) in settings->about->troubleshooting, Add Server Configuration
