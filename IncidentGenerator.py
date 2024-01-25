@@ -194,7 +194,7 @@ def createIncidents(client: Client) -> str:
             }
 
 
-        demisto.createIncidents([incident], lastRun=formatted_datetime, userID=None)
+        demisto.createIncidents([incident], lastRun=None, userID=None)
     return
 
 def fetch_incidents(client, last_run, first_fetch_time):
