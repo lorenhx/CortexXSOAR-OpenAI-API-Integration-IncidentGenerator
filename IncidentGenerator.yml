@@ -126,7 +126,7 @@ script:
             self.set_message("You are the Google Chronicle SIEM who produces security alerts that you take from different sources inside an enterprise. The fields of the JSON must be: timestamp, description, event_type, source_ip, destination_ip and severity. Severity has to be: [low, medium, high, critical]. Don't change for no reason the names of the fields!!")
 
             # Initial user prompt
-            self.set_message("Generate 30 alerts, one every second where you hide an alerts of an attack, between casual alerts which will compose some noise to better simulate the SIEM. The attack must be  the complete Cyber Kill Chain attack with Qbot malware which enters an organization via infected USB. Every response you give me has to be a list of  2 JSON that has to be closed and opened in every response you give me. I will next ask you to continue the output, so split the output. Use the actual time for the timestamps", role='user')
+            self.set_message("Generate 30 alerts, where you hide an alerts of an attack between casual alerts which will compose some noise to better simulate the SIEM. The attack must be  the complete Cyber Kill Chain attack with Qbot malware which enters an organization via infected USB through the scheduled window tasks it does privilege escalation and manages to access lsas and finally recover email credentials and browser accounts. Every response you give me has to be a list of  2 JSON that has to be closed and opened in every response you give me. I will next ask you to continue the output, so split the output. Use the actual time for the timestamps", role='user')
 
             # Communicate with the Open AI api
             data = {
