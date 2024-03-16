@@ -37,7 +37,6 @@ def test_module(client: Client) -> str:
     demisto.results("entro nel test module")
     try:
         response = client.chatgpt(data)
-        demisto.results("fatto richiesta nel test module")
     except Exception as e:
         demisto.error(traceback.format_exc())  # print the traceback
         return_error("Failed to communicate with Open AI Api. Error: " + str(e))
@@ -65,8 +64,10 @@ class OpenAIAssistant:
             'Authorization': f"Bearer {self.api_key}",
             'Content-Type': 'application/json'
         }
-        self.messages = [] #messages to send to the Open AI api in the content field
-        self.responses = [] #parsed responses from the Open AI api with the generated alerts in json format
+        #Messages to send to the Open AI api in the content field
+        self.messages = []
+        #Parsed responses from the Open AI api with the generated alerts in json format
+        self.responses = [] 
 
     def set_message(self, content, role='system'):
         self.messages.append({'role': role, 'content': content})
@@ -88,7 +89,7 @@ class OpenAIAssistant:
         #Return the last message to append to the next request
         return generated_content[0].get('message', {})
 
-    def create_session(self, continue_prompts=2): #con 4 non ce la con il contesto
+    def create_session(self, continue_prompts=2): 
         time.sleep(31)
         url = 'https://api.openai.com/'
 
@@ -111,14 +112,9 @@ class OpenAIAssistant:
             demisto.error(traceback.format_exc())  # print the traceback
             return_error("Failed to communicate with Open AI Api. Error: " + str(e))
 
-
-        #response = requests.post(url, headers=self.headers, json=data)
-        # if response.status_code != 200:
-        #     raise DemistoException(f"Error {response.status_code}: {response.text}")
-
         toappend = self.parser(response)
 
-        #token used
+        #Token used
         rep = json.dumps(response)
         repJSON = json.loads(rep)
         total_tokens = int(repJSON.get('usage', {}).get('total_tokens', 0))
@@ -127,7 +123,7 @@ class OpenAIAssistant:
 
         # Add "continue" prompts to generate more alerts
         for i in range(continue_prompts):
-            #wait 21 seconds to avoid overcoming the 3 requests per minute limit
+            #Wait 21 seconds to avoid overcoming the 3 requests per minute limit
             time.sleep(31)
 
             self.messages.append(toappend)
@@ -142,7 +138,7 @@ class OpenAIAssistant:
                 client = Client(api_key=self.api_key, base_url=url, verify=False, proxy=False)
                 response = client.chatgpt(data)
 
-                #controllo token usati
+                #Control used tokens
                 rep = json.dumps(response)
                 repJSON = json.loads(rep)
                 total_tokens = int(repJSON.get('usage', {}).get('total_tokens', 0))
@@ -172,7 +168,6 @@ def createIncidents(client: Client) -> str:
 
     # Get all parsed responses
     parsed_responses = openai_assistant.get_responses()
-    #demisto.results("fine richieste, inizio creazione incidenti")
     # Send generated alerts to Cortex XSOAR
     for response_json in parsed_responses:
         print(response_json)
@@ -196,83 +191,6 @@ def createIncidents(client: Client) -> str:
 
         demisto.createIncidents([incident], lastRun=None, userID=None)
     return
-
-def fetch_incidents(client, last_run, first_fetch_time):
-    """
-    This function will execute each interval (default is 1 minute).
-
-    Args:
-        client: HelloWorld client
-        last_run: The greatest incident created_time we fetched from last fetch
-        first_fetch_time: If last_run is None then fetch all incidents since first_fetch_time
-
-    Returns:
-        next_run: This will be last_run in the next fetch-incidents
-        incidents: Incidents that will be created in Cortex XSOAR
-    """
-    # Get the last fetch time, if exists
-    # last_fetch = last_run.get('last_fetch')
-
-    # # Handle first time fetch
-    # if last_fetch is None:
-    #     last_fetch, _ = dateparser.parse(first_fetch_time)
-    # else:
-    #     last_fetch = dateparser.parse(last_fetch)
-
-    # latest_created_time = last_fetch
-    incidents = []
-
-
-    time.sleep(31)
-    openai_assistant = OpenAIAssistant(str(demisto.params().get('api_key')))
-
-    # Create a session (send messages to the OpenAI API)
-
-    openai_assistant.create_session(continue_prompts=1)
-
-    # Get all parsed responses
-    parsed_responses = openai_assistant.get_responses()
-    #demisto.results("fine richieste, inizio creazione incidenti")
-    # Send generated alerts to Cortex XSOAR
-    cnt=0
-    for response_json in parsed_responses:
-        print(response_json)
-        if response_json["severity"] == "low":
-            response_json["severity"] = 1
-        elif response_json["severity"] == "medium":
-            response_json["severity"] = 2
-        elif response_json["severity"] == "high":
-            response_json["severity"] = 3
-        elif response_json["severity"] == "critical":
-            response_json["severity"] = 4
-        incident = {
-                'name': response_json["description"],
-                'occurred': response_json["timestamp"],
-                'rawJSON': json.dumps(response_json),
-                'type':response_json["event_type"],
-                'details': "source ip: " + response_json["source_ip"] + " destination ip: " + response_json["destination_ip"],
-                'severity':response_json["severity"],
-            }
-        print(incident)
-        current_datetime = datetime.now()
-        formatted_datetime = current_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
-        demisto.createIncidents([incident], lastRun=formatted_datetime, userID=None)
-        incident = {
-        'name': response_json["description"],
-        'occurred': response_json["timestamp"],
-        'rawJSON': json.dumps(response_json),
-        'dbotMirrorId': cnt,  # must be a string
-        }
-        cnt += 1
-        incidents.append(incident)
-    current_datetime = datetime.now()
-
-# Convert to a specific time format
-    formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-    next_run = {'last_fetch': formatted_datetime}
-    print('Alerts successfully generated using ChatGPT API and sent to Cortex XSOAR.')
-    return next_run, incidents
-
 
 def main():
     params = demisto.params()
